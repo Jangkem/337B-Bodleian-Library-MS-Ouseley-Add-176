@@ -10,19 +10,19 @@
   });
 
   function init (mapid) {
-    var minZoom = 1
-    var maxZoom = 5
+    var minZoom = 2
+    var maxZoom = 4
     var img = [
-      6639,
-      8185
+      4932,
+      7026
     ]
 
     // create the map
     var map = L.map(mapid, {
       //added from storymap
-      center: [4900, 3015],
-      zoom: 1,
-      scrollWheelZoom: false,
+      //center: [2466, 3513],
+      //zoom: 1,
+      //scrollWheelZoom: false,
       //
       minZoom: minZoom,
       maxZoom: maxZoom
@@ -32,7 +32,7 @@
     var rc = new L.RasterCoords(map, img)
 
     // set the view on a marker ...
-    map.setView(rc.unproject([4900, 3015]), 1)
+    //map.setView(rc.unproject([2466, 3513]), 1)
 /*
     // add layer control object
     L.control.layers({}, {
@@ -46,7 +46,7 @@
     // Look into line 49
     L.tileLayer('./tiles/{z}/{x}/{y}.png', {
       noWrap: true,
-      attribution: '<a href="<https://www.loc.gov/resource/g3200.mf000070/>"Library of Congress</a>'
+    // attribution: '<a href="<https://www.loc.gov/resource/g3200.mf000070/>"Library of Congress</a>'
     }).addTo(map)
 
   $.getJSON('map.geojson', function(data) {
@@ -128,7 +128,7 @@
 
         // Make markers clickable
         layer.on('click', function() {
-          $("div#contents").animate({scrollTop: areaTop + "px"});
+          $("div#contents").animate({scrollTop: (areaTop+100) + "px"});//Jon: just added 100 to areaTop so that when it scrolls, it accurately scrolls to the right starting area
         });
 
       })(layer, feature.properties);
